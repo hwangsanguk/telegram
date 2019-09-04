@@ -51,15 +51,16 @@ chat_id = data['result'][1]['message']['chat']['id']
 senders = []
 for result in data['result']:
     senders.append(result['message']['chat']['id'])
+
+
 receivers = set(senders)
-    print(receivers)
+print(receivers)
 text= 'python 으로 보내는 메세지'
-print(chat_id)
 send_url = f'{base_url}/bot{token}/sendMessage?chat_id={chat_id}&text={text}'
-print(send_url)
+
 
 
 for r in receivers:
-    send_url = f'{base_url}/bot{token}/sendMessage?chat_id={chat_id}&text={text}'
-send_res = requests.get(send_url)
-print(send_res)
+    send_url = f'{base_url}/bot{token}/sendMessage?chat_id={r}&text={text}'
+    send_res = requests.get(send_url)
+
